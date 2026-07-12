@@ -14,19 +14,18 @@
    ============================================================ */
 :root{
   color-scheme:light;
-  --base:      #D7A179;   /* PANTONE 2430 C */
-  --base-lt:   #E5BC9E;
-  --base-dk:   #A87A57;
-  --ink:       #2E3628;   /* 深いオリーブ黒 */
+  --base:      #E7BAE4;   /* PANTONE 250 C */
+  --base-lt:   #F1D6EF;
+  --base-dk:   #C795C4;
+  --ink:       #2E3628;
   --paper:     #EFF1E6;
-  --fast-blue: #2F6FA0;   /* 断食14時間の帯 */
-  --lv-red:    #C4372C;   /* 14h達成 */
-  --lv-pink:   #E58C97;   /* 12–13h */
-  --lv-yellow: #E5C43C;   /* 10–11h */
-  --lv-blue:   #5F93BE;   /* 10h未満 */
-  --gothic: "News Gothic", "News Gothic MT", "Franklin Gothic Medium",
-            "Trade Gothic", "Helvetica Neue", Helvetica, Arial,
-            "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --fast-blue: #2F6FA0;
+  --lv-red:    #C4372C;
+  --lv-pink:   #E58C97;
+  --lv-yellow: #E5C43C;
+  --lv-blue:   #5F93BE;
+  --gothic: "Bodoni 72", "Bodoni MT", "Bodoni 72 Oldstyle", "Didot",
+            "Playfair Display", "Times New Roman", serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
@@ -40,7 +39,7 @@ body{
 
 /* ---------- ヘッダー & デジタルカウントダウン ---------- */
 header{padding:18px 2px 6px;display:flex;justify-content:space-between;align-items:baseline}
-header h1{font-size:13px;letter-spacing:.28em;font-weight:700}
+header h1{font-size:20px;letter-spacing:-0.01em;font-weight:700}
 header .sub{font-size:10px;letter-spacing:.12em;opacity:.65}
 
 #digital{
@@ -49,7 +48,6 @@ header .sub{font-size:10px;letter-spacing:.12em;opacity:.65}
   border-radius:14px;
   padding:20px 16px 18px;
   margin-top:6px;
-  box-shadow:3px 3px 0 var(--base-dk);
   text-align:center;
 }
 #digital .label{font-size:11px;letter-spacing:.24em;opacity:.7;font-weight:700}
@@ -87,7 +85,6 @@ header .sub{font-size:10px;letter-spacing:.12em;opacity:.65}
   border:1.5px solid var(--ink);
   border-radius:14px;
   padding:14px;margin-top:14px;
-  box-shadow:3px 3px 0 var(--base-dk);
 }
 #panel .row{display:flex;align-items:center;gap:8px;justify-content:center}
 #panel label{font-size:11px;letter-spacing:.15em}
@@ -122,10 +119,10 @@ input[type="time"]::-webkit-date-and-time-value{text-align:center}
   width:34px;height:34px;border-radius:50%;font-size:15px;font-weight:700;
 }
 #weekdays,#calGrid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
-#weekdays div{text-align:center;font-size:10px;letter-spacing:.1em;padding:3px 0;font-weight:700;opacity:.85;color:var(--ink)}
+#weekdays div{text-align:center;font-size:9px;letter-spacing:.02em;padding:3px 0;font-weight:700;opacity:.85;color:var(--ink)}
 .cell{
   min-height:62px;background:var(--paper);
-  border:1px solid var(--base-dk);border-radius:6px;
+  border:none;border-radius:6px;
   padding:3px 3px 2px;position:relative;overflow:hidden;
   font-family:var(--gothic);
 }
@@ -435,7 +432,7 @@ document.getElementById('btnComment').onclick = () => {
 /* ================= カレンダー ================= */
 const grid = document.getElementById('calGrid');
 const monthLabel = document.getElementById('monthLabel');
-const WD = ['日','月','火','水','木','金','土'];
+const WD = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
 document.getElementById('weekdays').innerHTML = WD.map(w=>`<div>${w}</div>`).join('');
 document.getElementById('prevM').onclick = () => { viewMonth--; if(viewMonth<0){viewMonth=11;viewYear--;} renderCalendar(); };
 document.getElementById('nextM').onclick = () => { viewMonth++; if(viewMonth>11){viewMonth=0;viewYear++;} renderCalendar(); };
