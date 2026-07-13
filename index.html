@@ -19,7 +19,8 @@
   --base-dk:   #C795C4;
   --ink:       #2E3628;
   --paper:     #EFD7E5;   /* PANTONE 2050 C — パネル */
-  --type-plum: #B3809D;   /* PANTONE 2053 C — カウントダウン/時刻の文字 */
+  --type-rose: #C16784;   /* PANTONE 7634 C — カウントダウンの数字 */
+  --type-plum: #B3809D;   /* PANTONE 2053 C — 時刻の文字 */
   --type-teal: #00C19F;   /* PANTONE 2240 C — COMMENTの文字 */
   --mint:      #9BE3BF;   /* PANTONE 7478 C — COMMENT */
   --fast-blue: #2F6FA0;
@@ -48,7 +49,7 @@ header .sub{font-size:10px;letter-spacing:.12em;opacity:.65}
 #digital{
   background:var(--paper);
   border:none;
-  border-radius:14px;
+  border-radius:14px 14px 0 0;
   padding:20px 16px 18px;
   margin-top:6px;
   text-align:center;
@@ -58,7 +59,7 @@ header .sub{font-size:10px;letter-spacing:.12em;opacity:.65}
   font-size:64px;font-weight:800;letter-spacing:.03em;line-height:1.1;
   font-variant-numeric:tabular-nums;
   padding:4px 0 12px;
-  color:var(--type-plum);
+  color:var(--type-rose);
 }
 #digital.done #digTime{color:var(--lv-red);font-size:44px;letter-spacing:.06em}
 #digital.idle #digTime{font-size:64px;opacity:.35}
@@ -87,8 +88,8 @@ header .sub{font-size:10px;letter-spacing:.12em;opacity:.65}
 #panel{
   background:var(--paper);
   border:none;
-  border-radius:14px;
-  padding:14px;margin-top:14px;
+  border-radius:0 0 14px 14px;
+  padding:4px 14px 16px;margin-top:0;
 }
 #panel .row{display:flex;align-items:center;gap:8px;justify-content:center}
 #panel label{font-size:11px;letter-spacing:.15em}
