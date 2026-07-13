@@ -113,6 +113,7 @@ input[type="time"]::-webkit-date-and-time-value{text-align:center}
 #btnStart{background:var(--fast-blue);color:#fff}
 #btnEat{background:var(--lv-red);color:#fff}
 #btnComment{background:var(--mint);color:var(--type-teal)}
+#btnReset{background:#fff;color:var(--type-plum);font-size:11px}
 #panelMsg{text-align:center;font-size:11px;margin-top:8px;min-height:14px;opacity:.75}
 
 /* ---------- カレンダー ---------- */
@@ -204,9 +205,10 @@ input[type="time"]::-webkit-date-and-time-value{text-align:center}
     </div>
   </div>
   <div class="btns">
-    <button id="btnStart">START !</button>
-    <button id="btnEat">FINISH !</button>
-    <button id="btnComment">COMMENT</button>
+    <button id="btnStart">FAST</button>
+    <button id="btnEat">EAT</button>
+    <button id="btnComment">MEMO</button>
+    <button id="btnReset">RESET</button>
   </div>
   <div id="panelMsg"></div>
 </div>
@@ -432,6 +434,18 @@ document.getElementById('btnEat').onclick = () => {
 /* COMMENTボタン: 選択中の日(なければ今日)のコメントを開く */
 document.getElementById('btnComment').onclick = () => {
   openModal(selectedKey || dateKey(new Date()));
+};
+
+/* RESET: 間違えてSTARTした時に、カウントダウンを取り消して未開始に戻す */
+document.getElementById('btnReset').onclick = () => {
+  if(!lastMeal && !selectedKey){ msg.textContent = ''; return; }
+  if(confirm('カウントダウンをリセットしますか?(カレンダーの記録は消えません)')){
+    lastMeal = null;
+    selectedKey = null;
+    retroStart = null;
+    msg.textContent = 'リセットしました';
+    save(); tick(); renderCalendar();
+  }
 };
 
 /* ================= カレンダー ================= */
