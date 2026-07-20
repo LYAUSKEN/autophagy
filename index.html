@@ -105,15 +105,15 @@ input[type="time"]::-webkit-date-and-time-value{text-align:center}
   font-family:var(--gothic);font-size:12px;padding:9px 10px;border:0;background:#fff;color:var(--ink);
 }
 .dayToggle button.on{background:var(--ink);color:#fff}
-#panel .btns{display:flex;gap:8px;margin-top:12px}
+#panel .btns{display:flex;gap:6px;margin-top:12px}
 #panel .btns button{
-  flex:1;padding:12px 4px;border-radius:10px;border:none;
-  font-family:var(--gothic);font-size:13px;font-weight:700;letter-spacing:.05em;
+  flex:1;padding:12px 2px;border-radius:10px;border:none;
+  font-family:var(--gothic);font-size:12px;font-weight:700;letter-spacing:.03em;
 }
 #btnStart{background:var(--fast-blue);color:#fff}
 #btnEat{background:var(--lv-red);color:#fff}
 #btnComment{background:var(--mint);color:var(--type-teal)}
-#btnReset{background:#fff;color:var(--type-plum);font-size:11px}
+#btnReset{background:#fff;color:var(--type-plum)}
 #panelMsg{text-align:center;font-size:11px;margin-top:8px;min-height:14px;opacity:.75}
 
 /* ---------- カレンダー ---------- */
@@ -337,7 +337,7 @@ function tick(){
     digBox.className = 'done';
     digLabel.textContent = 'FASTING COMPLETE';
     digTime.textContent = 'YOU CAN EAT !';
-    digSub.textContent = `${TARGET_H}時間達成 — FINISH ! で記録しましょう`;
+    digSub.textContent = `${TARGET_H}時間達成 — EAT で記録しましょう`;
     band.style.clipPath = 'inset(0 100% 0 0)';
   }else{
     digBox.className = '';
@@ -406,7 +406,7 @@ document.getElementById('btnStart').onclick = () => {
 document.getElementById('btnEat').onclick = () => {
   if(selectedKey){
     // 選択日モード: 選択した日に記録する
-    if(!retroStart){ msg.textContent = '先に START ! を押してください'; return; }
+    if(!retroStart){ msg.textContent = '先に FAST を押してください'; return; }
     const d = readInput(keyToDate(selectedKey));
     if(!d){ msg.textContent = '食べ終えた時と分を入力してください'; return; }
     if(d <= retroStart){ msg.textContent = '終了時刻が開始時刻より前になっています'; return; }
@@ -418,7 +418,7 @@ document.getElementById('btnEat').onclick = () => {
     save(); renderCalendar();
     return;
   }
-  if(!lastMeal){ msg.textContent = '先に START ! で断食を開始してください'; return; }
+  if(!lastMeal){ msg.textContent = '先に FAST で断食を開始してください'; return; }
   const d = readInput() || new Date();
   if(d <= lastMeal){ msg.textContent = '終了時刻が開始時刻より前になっています'; return; }
   const hours = (d - lastMeal) / 3600000;
